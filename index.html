@@ -8,21 +8,19 @@
 </head>
 <body>
 
-<!-- Top utility bar, mirrors the thin strip wiki.gg style sites use above the main header -->
 <div class="topbar">
   <div class="topbar-inner">
-    <a href="#" class="topbar-link">Ironhold Wiki</a>
-    <div class="topbar-right">
-      <a href="#" class="topbar-link">Discord</a>
-      <a href="#" class="topbar-link">Log in</a>
+    <a href="index.html" class="topbar-link">Ironhold Wiki</a>
+    <div class="topbar-right" data-auth-state>
+      <a href="login.html" class="topbar-link">Log in</a>
     </div>
   </div>
 </div>
 
-<!-- Main header with logo and primary navigation -->
+<!-- Main header-->
 <header class="site-header">
   <div class="header-inner">
-    <a href="#" class="brand">
+    <a href="index.html" class="brand">
       <span class="brand-mark">IH</span>
       <span class="brand-text">
         <span class="brand-title">Ironhold</span>
@@ -31,15 +29,12 @@
     </a>
 
     <nav class="primary-nav">
-      <a href="#" class="nav-link active">Home</a>
-      <a href="#" class="nav-link">Characters</a>
-      <a href="#" class="nav-link">Locations</a>
-      <a href="#" class="nav-link">Items</a>
-      <a href="#" class="nav-link">Guides</a>
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="edit.html" class="nav-link">New page</a>
     </nav>
 
-    <form class="search-form" role="search">
-      <input type="search" class="search-input" placeholder="Search the wiki" aria-label="Search the wiki">
+    <form class="search-form" role="search" id="home-search">
+      <input type="search" class="search-input" placeholder="Search the wiki" aria-label="Search the wiki" name="q">
       <button type="submit" class="search-button" aria-label="Submit search">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="7" cy="7" r="5.25" stroke="currentColor" stroke-width="1.5"/>
@@ -50,130 +45,20 @@
   </div>
 </header>
 
-<div class="page-shell">
-
-  <!-- Left sidebar, the persistent navigation tree common to MediaWiki style layouts -->
-  <aside class="sidebar sidebar-left">
-    <nav class="side-nav">
-      <div class="side-nav-group">
-        <h3 class="side-nav-heading">Explore</h3>
-        <a href="#" class="side-nav-link">All pages</a>
-        <a href="#" class="side-nav-link">Recent changes</a>
-        <a href="#" class="side-nav-link">Random page</a>
-        <a href="#" class="side-nav-link">Categories</a>
-      </div>
-      <div class="side-nav-group">
-        <h3 class="side-nav-heading">Game content</h3>
-        <a href="#" class="side-nav-link">Factions</a>
-        <a href="#" class="side-nav-link">Weapons</a>
-        <a href="#" class="side-nav-link">Bestiary</a>
-        <a href="#" class="side-nav-link">Patch notes</a>
-      </div>
-      <div class="side-nav-group">
-        <h3 class="side-nav-heading">Community</h3>
-        <a href="#" class="side-nav-link">Forum</a>
-        <a href="#" class="side-nav-link">Style guide</a>
-        <a href="#" class="side-nav-link">Admins</a>
-      </div>
-    </nav>
-  </aside>
-
-  <!-- Main article column -->
+<div class="page-shell page-shell-single">
   <main class="content">
-
-    <div class="article-tabs">
-      <a href="#" class="article-tab active">Read</a>
-      <a href="#" class="article-tab">Edit</a>
-      <a href="#" class="article-tab">History</a>
-      <a href="#" class="article-tab">Talk</a>
-    </div>
-
-    <article class="article">
+    <div class="article">
       <div class="article-header">
-        <p class="article-eyebrow">Location</p>
-        <h1 class="article-title">Hollowmere Keep</h1>
-        <p class="article-updated">Last edited 3 days ago by <a href="#">Contributor_09</a></p>
+        <p class="article-eyebrow">Welcome</p>
+        <h1 class="article-title">Recent pages</h1>
+        <p class="article-updated">Every article on the wiki, newest first. Anyone can read, editors and admins can write.</p>
       </div>
 
-      <div class="article-body">
-
-        <!-- Infobox, floated alongside the lead paragraphs, the signature element of the template -->
-        <aside class="infobox">
-          <div class="infobox-header">Hollowmere Keep</div>
-          <div class="infobox-image" aria-hidden="true"></div>
-          <dl class="infobox-stats">
-            <div class="infobox-row">
-              <dt>Region</dt>
-              <dd>The Sunken Vale</dd>
-            </div>
-            <div class="infobox-row">
-              <dt>Type</dt>
-              <dd>Fortress, dungeon</dd>
-            </div>
-            <div class="infobox-row">
-              <dt>Recommended level</dt>
-              <dd>24 to 30</dd>
-            </div>
-            <div class="infobox-row">
-              <dt>Controlled by</dt>
-              <dd><a href="#">The Ashen Court</a></dd>
-            </div>
-            <div class="infobox-row">
-              <dt>Connects to</dt>
-              <dd><a href="#">Greywater Docks</a>, <a href="#">The Vale Road</a></dd>
-            </div>
-          </dl>
-        </aside>
-
-        <p>Hollowmere Keep is a flooded fortress at the northern edge of the Sunken Vale, built atop the ruins of an older structure that predates the current era. It serves as the primary stronghold of the Ashen Court and is the site of the level 28 story encounter, the Drowned Regent.</p>
-
-        <p>The keep is split across three tiers connected by a rotating waterwheel mechanism. Players entering for the first time should expect the outer courtyard to be lightly guarded, with resistance increasing sharply past the second gate.</p>
-
-        <h2 class="section-heading">Layout</h2>
-        <p>The outer courtyard opens onto a flooded causeway leading to the main gate. A side passage on the eastern wall bypasses the first checkpoint but requires the Tideglass Key, obtained from the Greywater Docks quest line.</p>
-
-        <h2 class="section-heading">Notable encounters</h2>
-        <ul class="article-list">
-          <li>The Drowned Regent, a tier 2 boss encounter requiring a party of four.</li>
-          <li>Sentry patrols on the second tier, which reset every twenty minutes.</li>
-          <li>An optional puzzle room behind the waterwheel mechanism.</li>
-        </ul>
-
-        <h2 class="section-heading">Trivia</h2>
-        <ul class="article-list">
-          <li>Hollowmere Keep was added in the Sunken Vale expansion.</li>
-          <li>Its architecture reuses assets from the earlier Greywater Docks region.</li>
-        </ul>
-
+      <div id="page-list" class="page-list">
+        <p>Loading pages...</p>
       </div>
-
-      <footer class="article-footer">
-        <p class="categories-label">Categories:</p>
-        <a href="#" class="category-tag">Locations</a>
-        <a href="#" class="category-tag">Sunken Vale</a>
-        <a href="#" class="category-tag">Dungeons</a>
-      </footer>
-    </article>
+    </div>
   </main>
-
-  <!-- Right sidebar, table of contents and page tools -->
-  <aside class="sidebar sidebar-right">
-    <div class="toc-box">
-      <h3 class="toc-heading">Contents</h3>
-      <nav class="toc-nav">
-        <a href="#" class="toc-link">Layout</a>
-        <a href="#" class="toc-link">Notable encounters</a>
-        <a href="#" class="toc-link">Trivia</a>
-      </nav>
-    </div>
-    <div class="tools-box">
-      <h3 class="toc-heading">Page tools</h3>
-      <a href="#" class="tool-link">What links here</a>
-      <a href="#" class="tool-link">Printable version</a>
-      <a href="#" class="tool-link">Permanent link</a>
-    </div>
-  </aside>
-
 </div>
 
 <footer class="site-footer">
@@ -183,6 +68,34 @@
   </div>
 </footer>
 
-<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const listEl = document.querySelector("#page-list");
+
+    const { data: pages, error } = await supabaseClient
+      .from("pages")
+      .select("slug, title, category, updated_at")
+      .order("updated_at", { ascending: false });
+
+    if (error) {
+      listEl.innerHTML = "<p>Could not load pages: " + error.message + "</p>";
+      return;
+    }
+
+    if (!pages || pages.length === 0) {
+      listEl.innerHTML = "<p>No pages yet. Log in as an editor or admin and create the first one.</p>";
+      return;
+    }
+
+    listEl.innerHTML = pages.map((page) => `
+      <a class="page-list-item" href="view.html?slug=${encodeURIComponent(page.slug)}">
+        <span class="page-list-title">${page.title}</span>
+        <span class="page-list-meta">${page.category ? page.category + ", " : ""}updated ${new Date(page.updated_at).toLocaleDateString()}</span>
+      </a>
+    `).join("");
+  });
+</script>
 </body>
 </html>
