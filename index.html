@@ -45,7 +45,7 @@
   </div>
 </header>
 
-<div class="page-shell page-shell-single">
+<div class="page-shell page-shell-sidebar">
   <main class="content">
     <div class="article">
       <div class="article-header">
@@ -70,31 +70,47 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <script src="js/supabaseClient.js"></script>
+<script src="js/layout.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", async () => {
     const listEl = document.querySelector("#page-list");
+    const searchForm = document.querySelector("#home-search");
+    const searchInput = searchForm.querySelector("input");
 
-    const { data: pages, error } = await supabaseClient
-      .from("pages")
-      .select("slug, title, category, updated_at")
-      .order("updated_at", { ascending: false });
+    const { data: pages, error } = await getAllPages();
 
     if (error) {
-      listEl.innerHTML = "<p>Could not load pages: " + error.message + "</p>";
+      listEl.innerHTML = "<p>Could not load pages: " + escapeHtml(error.message) + "</p>";
       return;
     }
 
-    if (!pages || pages.length === 0) {
-      listEl.innerHTML = "<p>No pages yet. Log in as an editor or admin and create the first one.</p>";
+    // Filters the list by title or category
+    function render(query) {
+      const needle = query.trim().toLowerCase();
+      const shown = (pages || []).filter((page) => {
+        return !needle
+          || page.title.toLowerCase().includes(needle)
+          || (page.category || "").toLowerCase().includes(needle);
+      });
+
+      if (shown.length === 0) {
+        listEl.innerHTML = "<p>" + (needle
+          ? "No articles match that search."
+          : "No articles yet. Log in and write the first one.") + "</p>";
       return;
     }
 
-    listEl.innerHTML = pages.map((page) => `
+    listEl.innerHTML = shown.map((page) => `
       <a class="page-list-item" href="view.html?slug=${encodeURIComponent(page.slug)}">
-        <span class="page-list-title">${page.title}</span>
-        <span class="page-list-meta">${page.category ? page.category + ", " : ""}updated ${new Date(page.updated_at).toLocaleDateString()}</span>
+        <span class="page-list-title">${escapeHtml(page.title)}</span>
+          <span class="page-list-meta">${page.category ? escapeHtml(page.category) + ", " : ""}updated ${new Date(page.updated_at).toLocaleDateString()}</span>
       </a>
     `).join("");
+     }
+
+    render("");
+    searchInput.addEventListener("input", () => render(searchInput.value));
+    searchForm.addEventListener("submit", (event) => event.preventDefault());
   });
 </script>
 </body>
