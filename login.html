@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log in, Ironhold Wiki</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="topbar-link">Ironhold Wiki</a>
+    <div class="topbar-right" data-auth-state></div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">IH</span>
+      <span class="brand-text">
+        <span class="brand-title">Ironhold</span>
+        <span class="brand-subtitle">The community wiki</span>
+      </span>
+    </a>
+    <nav class="primary-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="edit.html" class="nav-link">New article</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-shell page-shell-single">
+  <main class="content">
+    <div class="auth-shell">
+      <div class="article auth-card auth-card-tabbed">
+
+        <div class="auth-tabs" role="tablist" aria-label="Account">
+          <button type="button" class="auth-tab" role="tab" id="tab-login" aria-controls="panel-login" aria-selected="true" data-tab="login">Log in</button>
+          <button type="button" class="auth-tab" role="tab" id="tab-signup" aria-controls="panel-signup" aria-selected="false" tabindex="-1" data-tab="signup">Sign up</button>
+        </div>
+
+        <section class="auth-panel" id="panel-login" role="tabpanel" aria-labelledby="tab-login">
+          <h1 class="auth-title">Welcome back</h1>
+          <p class="auth-lead">Log in to write and edit articles.</p>
+          <form id="login-form" class="auth-form">
+            <label class="editor-label editor-label-full">
+              Email
+              <input type="email" name="email" class="editor-input" autocomplete="email" required>
+            </label>
+            <label class="editor-label editor-label-full">
+              Password
+              <input type="password" name="password" class="editor-input" autocomplete="current-password" required>
+            </label>
+            <button type="submit" class="save-button">Log in</button>
+          </form>
+        </section>
+
+        <section class="auth-panel" id="panel-signup" role="tabpanel" aria-labelledby="tab-signup" hidden>
+          <h1 class="auth-title">Create an account</h1>
+          <form id="signup-form" class="auth-form">
+            <label class="editor-label editor-label-full">
+              Username
+              <input type="text" name="username" class="editor-input" autocomplete="nickname" minlength="2" maxlength="40" required>
+            </label>
+            <label class="editor-label editor-label-full">
+              Email
+              <input type="email" name="email" class="editor-input" autocomplete="email" required>
+            </label>
+            <label class="editor-label editor-label-full">
+              Password
+              <input type="password" name="password" class="editor-input" autocomplete="new-password" minlength="8" required>
+            </label>
+            <label class="editor-label editor-label-full">
+              Confirm password
+              <input type="password" name="confirm" class="editor-input" autocomplete="new-password" minlength="8" required>
+            </label>
+            <button type="submit" class="save-button">Sign up</button>
+          </form>
+        </section>
+
+        <p id="auth-status" class="auth-status" role="status" hidden></p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>
