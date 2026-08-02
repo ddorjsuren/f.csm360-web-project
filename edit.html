@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit page, Ironhold Wiki</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="topbar-link">Ironhold Wiki</a>
+    <div class="topbar-right" data-auth-state>
+      <a href="login.html" class="topbar-link">Log in</a>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">IH</span>
+      <span class="brand-text">
+        <span class="brand-title">Ironhold</span>
+        <span class="brand-subtitle">The community wiki</span>
+      </span>
+    </a>
+    <nav class="primary-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="edit.html" class="nav-link active">New page</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-shell page-shell-single">
+  <main class="content">
+    <div class="article">
+
+      <p id="permission-notice" class="permission-notice" hidden></p>
+
+      <form id="editor-form">
+        <div class="editor-field-row">
+          <label class="editor-label">
+            Title
+            <input type="text" id="page-title" class="editor-input" required>
+          </label>
+          <label class="editor-label">
+            Slug
+            <input type="text" id="page-slug" class="editor-input" placeholder="hollowmere-keep" required>
+          </label>
+          <label class="editor-label">
+            Category
+            <input type="text" id="page-category" class="editor-input" placeholder="Locations">
+          </label>
+        </div>
+
+        <div id="editor-toolbar" class="editor-toolbar">
+          <button type="button" data-command="bold" title="Bold"><strong>B</strong></button>
+          <button type="button" data-command="italic" title="Italic"><em>I</em></button>
+          <button type="button" data-command="underline" title="Underline"><u>U</u></button>
+          <span class="toolbar-divider"></span>
+          <button type="button" data-command="formatBlock" data-value="h2" title="Heading">H2</button>
+          <button type="button" data-command="formatBlock" data-value="blockquote" title="Quote">&ldquo;</button>
+          <span class="toolbar-divider"></span>
+          <button type="button" data-command="insertUnorderedList" title="Bulleted list">&bull; list</button>
+          <button type="button" data-command="insertOrderedList" title="Numbered list">1. list</button>
+          <span class="toolbar-divider"></span>
+          <button type="button" data-command="createLink" title="Insert link">Link</button>
+          <button type="button" data-command="removeFormat" title="Clear formatting">Clear</button>
+        </div>
+
+        <div id="editor-body" class="editor-body" contenteditable="true"></div>
+
+        <label class="editor-label editor-label-full">
+          Edit summary
+          <input type="text" id="edit-summary" class="editor-input" placeholder="What did you change, and why">
+        </label>
+
+        <button type="submit" id="save-page" class="save-button">Save page</button>
+      </form>
+
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script src="js/editor.js"></script>
+</body>
+</html>
