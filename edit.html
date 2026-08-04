@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Edit page, Ironhold Wiki</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -37,47 +38,47 @@
   <main class="content">
     <div class="article">
 
-      <p id="permission-notice" class="permission-notice" hidden></p>
+      <p id="permission-notice" class="permission-notice alert alert-warning" hidden></p>
 
       <form id="editor-form">
         <div class="editor-field-row">
           <label class="editor-label">
             Title
-            <input type="text" id="page-title" class="editor-input" required>
+            <input type="text" id="page-title" class="editor-input form-control" required>
           </label>
           <label class="editor-label">
             Slug
-            <input type="text" id="page-slug" class="editor-input" placeholder="hollowmere-keep" required>
+            <input type="text" id="page-slug" class="editor-input form-control" placeholder="hollowmere-keep" required>
           </label>
           <label class="editor-label">
             Category
-            <input type="text" id="page-category" class="editor-input" placeholder="Locations">
+            <input type="text" id="page-category" class="editor-input form-control" placeholder="Locations">
           </label>
         </div>
 
         <div id="editor-toolbar" class="editor-toolbar">
-          <button type="button" data-command="bold" title="Bold"><strong>B</strong></button>
-          <button type="button" data-command="italic" title="Italic"><em>I</em></button>
-          <button type="button" data-command="underline" title="Underline"><u>U</u></button>
+          <button type="button" data-command="bold" title="Bold" class="btn btn-sm btn-outline-secondary"><strong>B</strong></button>
+          <button type="button" data-command="italic" title="Italic" class="btn btn-sm btn-outline-secondary"><em>I</em></button>
+          <button type="button" data-command="underline" title="Underline" class="btn btn-sm btn-outline-secondary"><u>U</u></button>
           <span class="toolbar-divider"></span>
-          <button type="button" data-command="formatBlock" data-value="h2" title="Heading">H2</button>
-          <button type="button" data-command="formatBlock" data-value="blockquote" title="Quote">&ldquo;</button>
+          <button type="button" data-command="formatBlock" data-value="h2" title="Heading" class="btn btn-sm btn-outline-secondary">H2</button>
+          <button type="button" data-command="formatBlock" data-value="blockquote" title="Quote" class="btn btn-sm btn-outline-secondary">&ldquo;</button>
           <span class="toolbar-divider"></span>
-          <button type="button" data-command="insertUnorderedList" title="Bulleted list">&bull; list</button>
-          <button type="button" data-command="insertOrderedList" title="Numbered list">1. list</button>
+          <button type="button" data-command="insertUnorderedList" title="Bulleted list" class="btn btn-sm btn-outline-secondary">&bull; list</button>
+          <button type="button" data-command="insertOrderedList" title="Numbered list" class="btn btn-sm btn-outline-secondary">1. list</button>
           <span class="toolbar-divider"></span>
-          <button type="button" data-command="createLink" title="Insert link">Link</button>
-          <button type="button" data-command="removeFormat" title="Clear formatting">Clear</button>
+          <button type="button" data-command="createLink" title="Insert link" class="btn btn-sm btn-outline-secondary">Link</button>
+          <button type="button" data-command="removeFormat" title="Clear formatting" class="btn btn-sm btn-outline-secondary">Clear</button>
         </div>
 
         <div id="editor-body" class="editor-body" contenteditable="true"></div>
 
         <label class="editor-label editor-label-full">
           Edit summary
-          <input type="text" id="edit-summary" class="editor-input" placeholder="What did you change, and why">
+          <input type="text" id="edit-summary" class="editor-input form-control" placeholder="What did you change, and why">
         </label>
 
-        <button type="submit" id="save-page" class="save-button">Save page</button>
+        <button type="submit" id="save-page" class="btn btn-primary mt-3">Save page</button>
       </form>
 
     </div>

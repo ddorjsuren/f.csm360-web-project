@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function showStatus(message, isError) {
     statusBox.textContent = message;
-    statusBox.classList.toggle("auth-status-error", Boolean(isError));
+    statusBox.className = "auth-status alert " + (isError ? "alert-danger" : "alert-success");
     statusBox.hidden = false;
   }
 

@@ -64,10 +64,10 @@ async function renderAuthState() {
     container.innerHTML = '<a href="login.html" class="topbar-link">Log in</a>';
     return;
   }
-
+  const badgeStyles = { admin: "text-bg-warning", editor: "text-bg-info", guest: "text-bg-secondary" };
   const roleLabel = profile.role.charAt(0).toUpperCase() + profile.role.slice(1);
   container.innerHTML = `
-    <span class="role-badge role-badge-${profile.role}">${roleLabel}</span>
+    <span class="badge rounded-pill ${badgeStyles[profile.role] || "text-bg-secondary"} ms-3">${roleLabel}</span>
     <span class="topbar-link">${escapeHtml(profile.username)}</span>
     <a href="#" class="topbar-link" data-logout>Log out</a>
   `;

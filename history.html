@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>History, Ironhold Wiki</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -39,8 +40,8 @@
     <p class="history-hint">Check two revisions and press Compare to see what changed between them.</p>
     <div id="revision-list" class="revision-list"></div>
     <div class="history-actions">
-      <button type="button" id="compare-button" class="save-button">Compare selected</button>
-      <button type="button" id="revert-button" class="revert-button" disabled hidden>Revert to selected</button>
+      <button type="button" id="compare-button" class="btn btn-primary mt-3">Compare selected</button>
+      <button type="button" id="revert-button" class="btn btn-outline-warning" disabled hidden>Revert to selected</button>
     </div>
   </aside>
 

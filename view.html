@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ironhold Wiki</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="topbar-link">Ironhold Wiki</a>
+    <div class="topbar-right" data-auth-state>
+      <a href="login.html" class="topbar-link">Log in</a>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">IH</span>
+      <span class="brand-text">
+        <span class="brand-title">Ironhold</span>
+        <span class="brand-subtitle">The community wiki</span>
+      </span>
+    </a>
+    <nav class="primary-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="edit.html" class="nav-link">New page</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-shell page-shell-single">
+  <main class="content">
+    <div class="article-tabs">
+      <a href="#" class="article-tab active">Read</a>
+      <a href="#" class="article-tab" id="edit-tab">Edit</a>
+      <a href="#" class="article-tab" id="history-tab">History</a>
+    </div>
+
+    <article class="article">
+      <div class="article-header">
+        <p class="article-eyebrow" id="article-category">Article</p>
+        <h1 class="article-title" id="article-title">Loading...</h1>
+        <p class="article-updated" id="article-updated"></p>
+      </div>
+
+      <div class="article-body" id="article-body"></div>
+    </article>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>Ironhold Wiki is a fan run resource and is not affiliated with the game's publisher.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get("slug");
+
+    if (!slug) {
+      document.querySelector("#article-title").textContent = "No page requested";
+      return;
+    }
+
+    document.querySelector("#edit-tab").href = "edit.html?slug=" + encodeURIComponent(slug);
+    document.querySelector("#history-tab").href = "history.html?slug=" + encodeURIComponent(slug);
+
+    const { data: page, error } = await supabaseClient
+      .from("pages")
+      .select("title, category, current_content, updated_at")
+      .eq("slug", slug)
+      .single();
+
+    if (error || !page) {
+      document.querySelector("#article-title").textContent = "Page not found";
+      return;
+    }
+
+    document.querySelector("#article-category").textContent = page.category || "Article";
+    document.querySelector("#article-title").textContent = page.title;
+    document.querySelector("#article-updated").textContent = "Last updated " + new Date(page.updated_at).toLocaleString();
+    document.querySelector("#article-body").innerHTML = DOMPurify.sanitize(page.current_content);
+  });
+</script>
+</body>
+</html>
