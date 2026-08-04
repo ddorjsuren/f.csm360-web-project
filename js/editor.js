@@ -1,10 +1,3 @@
-// Powers edit.html: a contenteditable rich text area with a small
-// formatting toolbar, plus the logic to create a new page or save a new
-// revision of an existing one. Depends on supabaseClient.js.
-//
-// Content is sanitized with DOMPurify (loaded from a CDN in edit.html)
-// before it is written to Supabase or rendered anywhere else, since it
-// is stored and displayed as raw HTML.
 
 document.addEventListener("DOMContentLoaded", async () => {
   const editorRoot = document.querySelector("#editor-body");
@@ -29,9 +22,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  // Toolbar buttons use document.execCommand, which is deprecated but
-  // still broadly supported and is the simplest way to get a working
-  // rich text editor without pulling in a framework or a heavy library.
   toolbar.addEventListener("click", (event) => {
     const button = event.target.closest("[data-command]");
     if (!button) {
@@ -58,8 +48,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.execCommand(command, false, null);
   });
 
-  // Existing page: pull the slug out of the query string and load its
-  // current content so the form starts pre filled.
+  // Existing page
   const params = new URLSearchParams(window.location.search);
   const editingSlug = params.get("slug");
   let existingPage = null;

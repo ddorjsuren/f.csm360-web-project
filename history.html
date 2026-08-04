@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>History, Ironhold Wiki</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="topbar-link">Ironhold Wiki</a>
+    <div class="topbar-right" data-auth-state>
+      <a href="login.html" class="topbar-link">Log in</a>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark">IH</span>
+      <span class="brand-text">
+        <span class="brand-title">Ironhold</span>
+        <span class="brand-subtitle">The community wiki</span>
+      </span>
+    </a>
+    <nav class="primary-nav">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="edit.html" class="nav-link">New page</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-shell">
+  <aside class="sidebar sidebar-left">
+    <h1 class="history-title" id="history-page-title">History</h1>
+    <p class="history-hint">Check two revisions and press Compare to see what changed between them.</p>
+    <div id="revision-list" class="revision-list"></div>
+    <div class="history-actions">
+      <button type="button" id="compare-button" class="save-button">Compare selected</button>
+      <button type="button" id="revert-button" class="revert-button" disabled hidden>Revert to selected</button>
+    </div>
+  </aside>
+
+  <main class="content">
+    <div class="article">
+      <div id="diff-view" class="diff-view">
+        <p>Select two revisions on the left and press Compare.</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="js/supabaseClient.js"></script>
+<script src="js/history.js"></script>
+</body>
+</html>
