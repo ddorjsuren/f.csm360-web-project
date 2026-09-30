@@ -39,6 +39,7 @@
       <a href="#" class="article-tab active">Read</a>
       <a href="#" class="article-tab" id="edit-tab">Edit</a>
       <a href="#" class="article-tab" id="history-tab">History</a>
+      <button type="button" id="delete-button" class="btn btn-outline-danger btn-sm ms-auto align-self-center" hidden>Delete article</button>
     </div>
 
     <article class="article">
@@ -77,7 +78,7 @@
 
     const { data: page, error } = await supabaseClient
       .from("pages")
-      .select("title, category, current_content, updated_at")
+      .select("id, title, category, current_content, updated_at")
       .eq("slug", slug)
       .single();
 
@@ -90,6 +91,35 @@
     document.querySelector("#article-title").textContent = page.title;
     document.querySelector("#article-updated").textContent = "Last updated " + new Date(page.updated_at).toLocaleString();
     document.querySelector("#article-body").innerHTML = DOMPurify.sanitize(page.current_content);
+    // Only admins see the delete button.
+    const profile = await getCurrentUserProfile();
+    if (profile && profile.role === "admin") {
+      const deleteButton = document.querySelector("#delete-button");
+      deleteButton.hidden = false;
+
+      deleteButton.addEventListener("click", async () => {
+        const message = `Delete "${page.title}" and its entire revision history? This cannot be undone.`;
+        if (!window.confirm(message)) {
+          return;
+        }
+
+        deleteButton.disabled = true;
+
+        const { data, error: deleteError } = await supabaseClient
+          .from("pages")
+          .delete()
+          .eq("id", page.id)
+          .select("id");
+
+        if (deleteError || !data || data.length === 0) {
+          window.alert("Delete failed: " + (deleteError ? deleteError.message : "the database refused the request."));
+          deleteButton.disabled = false;
+          return;
+        }
+
+        window.location.href = "index.html";
+      });
+    }
   });
 </script>
 </body>
